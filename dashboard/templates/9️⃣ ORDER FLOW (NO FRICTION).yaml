@@ -1,0 +1,11 @@
+order_flow:
+  steps:
+    - choose_category
+    - customize
+    - bundle_optional
+    - payment_instructions
+    - pickup_or_delivery
+  payments:
+    - CashApp
+    - Zelle
+    - Apple Pay

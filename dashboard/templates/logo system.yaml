@@ -1,0 +1,23 @@
+logo:
+  primary:
+    description: >
+      Gold luxury wordmark on black background.
+      Centered queen chess piece replaces the letter 'I'.
+      Thin gold halo above the queen.
+      Soft angel wings placed BEHIND the wordmark.
+      Wings are subtle, low opacity, atmospheric.
+      Controlled gold dust sparkle around crown only.
+  composition:
+    order: ["E", "N", "V", "QUEEN", "O", "U", "S"]
+    queen_alignment: "baseline aligned, acts as spine of word"
+    wings:
+      position: "behind letters"
+      opacity: 0.65
+      blur: "very light edge softness"
+      role: "aura, not symbol"
+  variants:
+    - gold_on_black (hero)
+    - black_on_white
+    - white_on_black
+    - icon_only (queen + halo)
+    - flat_vector

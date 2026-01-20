@@ -1,0 +1,16 @@
+site:
+  pages:
+    - Home
+    - Catalog
+    - Bundle Builder
+    - Events
+    - Gallery
+    - Order Now
+    - Contact
+  hero:
+    headline: "ENvious"
+    subtext: "Luxury gifts & custom event creations designed to be desired."
+    buttons:
+      - "Shop Menu"
+      - "Build a Bundle"
+      - "Book an Event"

@@ -1,0 +1,43 @@
+sequence:
+  - step: 1
+    time: 0.0-0.8
+    action: "black velvet background fade in"
+    effect: "soft grain + vignette"
+
+  - step: 2
+    time: 0.8-1.8
+    action: "gold dust particles slowly appear"
+    behavior: "floating, orbiting center point"
+    density: "light"
+
+  - step: 3
+    time: 1.8-2.6
+    action: "halo fades in first"
+    glow_intensity: 0.7
+    motion: "very slow pulse"
+
+  - step: 4
+    time: 2.6-3.6
+    action: "queen chess piece rises from center"
+    motion: "smooth vertical ease-in"
+    scale: "1.0"
+    lighting: "gold rim light"
+
+  - step: 5
+    time: 3.6-4.6
+    action: "wings fade outward BEHIND text"
+    opacity: 0.6
+    blur: "subtle edge softness"
+
+  - step: 6
+    time: 4.6-5.8
+    action: "ENV OUS letters draw in"
+    style: "gold calligraphy stroke reveal"
+    depth: "letters sit above wings"
+
+  - step: 7
+    time: 5.8-6.5
+    action: "tagline fades in"
+    text: "If they’re not envious, it’s not enough."
+    size: "small"
+    opacity: 0.85

@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Inspire Dashboard</title>
+
+  <style>
+    :root{
+      --bg:#07070c;
+      --card: rgba(18,18,26,.72);
+      --stroke: rgba(255,255,255,.10);
+      --text:#ECECF4;
+      --muted: rgba(236,236,244,.65);
+      --gold:#c9a86a;
+      --gold2:#f1e1b8;
+      --glow: 0 0 26px rgba(201,168,106,.24);
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+      color:var(--text);
+      background: var(--bg);
+      min-block-size:100vh;
+      overflow-x:hidden;
+    }
+
+    /* INSPIRE BACKDROP */
+    .bg{
+      position:fixed; inset:0; z-index:-1;
+      background:
+        radial-gradient(900px 650px at 15% 10%, rgba(201,168,106,.18), transparent 60%),
+        radial-gradient(900px 650px at 90% 30%, rgba(120,160,255,.10), transparent 55%),
+        url("/static/img/pattern.png");
+      background-size: cover;
+      background-position: center;
+      filter: saturate(1.05) contrast(1.05);
+      opacity:.22;
+      pointer-events:none;
+    }
+
+    header{
+      position:sticky; inset-block-start:0; z-index:10;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:14px;
+      padding:16px 18px;
+      border-block-end:1px solid var(--stroke);
+      background: linear-gradient(to bottom, rgba(10,10,14,.88), rgba(10,10,14,.45));
+      backdrop-filter: blur(12px);
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:14px;
+      min-inline-size: 240px;
+    }
+
+    .badge{
+      inline-size:44px;block-size:44px;border-radius:14px;
+      border:1px solid var(--stroke);
+      background: rgba(0,0,0,.28);
+      box-shadow: var(--glow);
+      display:grid;place-items:center;
+      font-weight:900;
+      color: var(--gold2);
+      letter-spacing:.5px;
+    }
+
+    .brandText b{display:block; letter-spacing:.3px}
+    .brandText small{color:var(--muted)}
+
+    .rightPill{
+      display:flex; gap:10px; align-items:center;
+      padding:10px 12px; border-radius:999px;
+      border:1px solid var(--stroke);
+      background: rgba(0,0,0,.22);
+    }
+    .dot{inline-size:10px;block-size:10px;border-radius:999px;background:#34d399;box-shadow:var(--glow)}
+    .time{color:var(--muted);font-size:12px}
+
+    main{
+      padding:16px 18px;
+      display:grid;
+      grid-template-columns: 360px 1fr;
+      gap:14px;
+    }
+
+    .card{
+      border:1px solid var(--stroke);
+      background: var(--card);
+      border-radius:18px;
+      box-shadow: 0 18px 55px rgba(0,0,0,.45);
+      overflow:hidden;
+      position:relative;
+    }
+
+    .card h2{
+      margin:0;
+      padding:14px 16px;
+      border-block-end:1px solid var(--stroke);
+      font-size:14px;
+      letter-spacing:.4px;
+      display:flex;
+      justify-content:space-between;
+      align-items:end;
+    }
+    .hint{color:var(--muted); font-size:12px; font-weight:500}
+
+    .platforms{
+      padding:14px 16px;
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:10px;
+    }
+
+    .plat{
+      padding:12px;
+      border-radius:14px;
+      border:1px solid var(--stroke);
+      background: rgba(0,0,0,.18);
+      color:var(--text);
+      cursor:pointer;
+      transition: transform .12s ease, border-color .12s ease, box-shadow .12s ease;
+      text-align:start;
+    }
+    .plat:hover{transform: translateY(-1px); border-color: rgba(201,168,106,.35); box-shadow: var(--glow)}
+    .plat.active{border-color: rgba(201,168,106,.65); box-shadow: var(--glow)}
+
+    .actions{
+      padding:14px 16px 16px;
+      border-block-start:1px solid var(--stroke);
+    }
+    .actions .title{color:var(--gold);font-weight:800;margin-block-end:10px}
+
+    .btns{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:10px;
+    }
+    .btn{
+      padding:12px;
+      border-radius:14px;
+      border:1px solid var(--stroke);
+      background: rgba(0,0,0,.20);
+      color:var(--text);
+      cursor:pointer;
+      transition: transform .12s ease, border-color .12s ease, box-shadow .12s ease;
+    }
+    .btn:hover{transform: translateY(-1px); border-color: rgba(255,255,255,.18)}
+    .btn.primary{
+      grid-column: 1 / -1;
+      border-color: rgba(201,168,106,.55);
+      background: rgba(201,168,106,.14);
+      box-shadow: var(--glow);
+      font-weight:800;
+    }
+
+    .consoleWrap{padding:14px 16px 16px}
+    .row{
+      padding:10px 16px;
+      display:flex;
+      justify-content:space-between;
+      border-block-end:1px solid rgba(255,255,255,.06);
+      color:var(--muted);
+      font-size:12px;
+    }
+    .console{
+      margin:0;
+      padding:12px;
+      border-radius:14px;
+      border:1px solid var(--stroke);
+      background: rgba(0,0,0,.28);
+      min-block-size: 260px;
+      white-space: pre-wrap;
+      color: rgba(236,236,244,.92);
+      font-size: 12px;
+      line-height: 1.35;
+    }
+
+    /* WORDMARK PANEL */
+    .hero{
+      padding:14px 16px 16px;
+      border-block-end:1px solid rgba(255,255,255,.06);
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      background: rgba(0,0,0,.18);
+    }
+    .hero img{
+      inline-size: 92%;
+      max-inline-size: 520px;
+      max-block-size:240px;
+      object-fit:contain;
+      filter: drop-shadow(0 18px 40px rgba(0,0,0,.55));
+      opacity:.92;
+    }
+
+    @media (max-inline-size: 980px){
+      main{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+
+<body>
+  <div class="bg"></div>
+
+  <header>
+    <div class="brand">
+      <div class="badge">I</div>
+      <div class="brandText">
+        <b>Inspire Dashboard</b>
+        <small id="sub">Status: Running</small>
+      </div>
+    </div>
+
+    <div class="rightPill">
+      <span class="dot"></span>
+      <span class="time" id="time">—</span>
+    </div>
+  </header>
+
+  <main>
+    <!-- LEFT -->
+    <section class="card">
+      <h2>
+        <span>Platforms</span>
+        <span class="hint">keep + add more</span>
+      </h2>
+
+      <!-- KEEP your existing options + add more (no removals) -->
+      <div class="platforms" id="platforms">
+        <button class="plat" data-plat="shopify">Shopify</button>
+        <button class="plat" data-plat="facebook">Facebook</button>
+        <button class="plat" data-plat="tiktok">TikTok</button>
+        <button class="plat" data-plat="instagram">Instagram</button>
+        <button class="plat" data-plat="youtube">YouTube</button>
+        <button class="plat" data-plat="analytics">Analytics</button>
+
+        <!-- ADDED (more options) -->
+        <button class="plat" data-plat="google_ads">Google Ads</button>
+        <button class="plat" data-plat="pinterest">Pinterest</button>
+        <button class="plat" data-plat="x">X (Twitter)</button>
+        <button class="plat" data-plat="email">Email</button>
+        <button class="plat" data-plat="sms">SMS</button>
+        <button class="plat" data-plat="webhook">Webhooks</button>
+      </div>
+
+      <div class="actions">
+        <div class="title" id="selected">Selected: None</div>
+        <div class="btns">
+          <button class="btn" data-action="api_add">API • Add New</button>
+          <button class="btn" data-action="post_share">Post / Share</button>
+          <button class="btn" data-action="upload">Upload</button>
+          <button class="btn primary" data-action="run_sync">Run Sync (stub)</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- RIGHT -->
+    <section class="card">
+      <div class="hero">
+        <img src="/static/img/wordmark.png" alt="Only Inspire Always Original">
+      </div>
+
+      <h2>
+        <span>System Console</span>
+        <span class="hint">live logs</span>
+      </h2>
+
+      <div class="row">
+        <span>Platform</span>
+        <span id="platMini">None</span>
+      </div>
+
+      <div id="products" class="consoleWrap" style="display:none;">
+        <h3 style="margin:0 0 10px 0; color:var(--gold);">Shopify Products</h3>
+        <div id="productList" style="display:grid; gap:10px;"></div>
+      </div>
+
+      <div id="consoleSection" class="consoleWrap">
+        <pre class="console" id="console">Loading…</pre>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const consoleEl = document.getElementById("console");
+    const timeEl = document.getElementById("time");
+    const selectedEl = document.getElementById("selected");
+    const platMini = document.getElementById("platMini");
+    const productsEl = document.getElementById("products");
+    const consoleSection = document.getElementById("consoleSection");
+    const productListEl = document.getElementById("productList");
+
+    let selected = null;
+
+    async function postJSON(url, body){
+      const r = await fetch(url, {
+        method: "POST",
+        headers: {"Content-Type":"application/json"},
+        body: JSON.stringify(body || {})
+      });
+      return r.json();
+    }
+
+    document.querySelectorAll(".plat").forEach(btn => {
+      btn.addEventListener("click", async () => {
+        document.querySelectorAll(".plat").forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        selected = btn.dataset.plat;
+        await postJSON("/api/select", {platform: selected});
+        await refresh();
+      });
+    });
+
+    document.querySelectorAll(".btns .btn").forEach(btn => {
+      btn.addEventListener("click", async () => {
+        const action = btn.dataset.action;
+        await postJSON("/api/action", {action});
+        await refresh();
+      });
+    });
+
+    async function refresh(){
+      const r = await fetch("/api/status");
+      const s = await r.json();
+      timeEl.textContent = s.time || "—";
+
+      const p = s.platform || "None";
+      selectedEl.textContent = "Selected: " + p;
+      platMini.textContent = p;
+
+      if (s.products && s.products.length > 0) {
+        consoleSection.style.display = 'none';
+        productsEl.style.display = 'block';
+        productListEl.innerHTML = s.products.map(product => `
+          <div style="padding:10px; border:1px solid var(--stroke); border-radius:8px; background:rgba(0,0,0,.2);">
+            <strong>${product.title}</strong><br>
+            <small style="color:var(--muted);">ID: ${product.id} | Variants: ${product.variants.length}</small>
+          </div>
+        `).join('');
+      } else {
+        productsEl.style.display = 'none';
+        consoleSection.style.display = 'block';
+        consoleEl.textContent = (s.logs || []).join("\n");
+      }
+    }
+
+    refresh();
+    setInterval(refresh, 2000);
+  </script>
+</body>
+</html>

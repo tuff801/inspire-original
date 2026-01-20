@@ -1,0 +1,21 @@
+events:
+  packages:
+    - name: "The Pop"
+      type: Birthday
+      price_from: 250
+
+    - name: "The Checkmate"
+      type: Proposal / Anniversary
+      price_from: 450
+
+    - name: "The Shower"
+      type: Baby / Bridal
+      price_from: 600
+
+    - name: "The Crowned Union"
+      type: Wedding
+      price_from: 1200
+
+    - name: "The Takeover"
+      type: Corporate / Grand Opening
+      price_from: 800

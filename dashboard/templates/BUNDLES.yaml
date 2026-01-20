@@ -1,0 +1,8 @@
+bundles:
+  enabled: true
+  rules:
+    - name: "Pick 2"
+      discount_percent: 10
+    - name: "Pick 3"
+      discount_percent: 15
+  display_style: "gold outlined card with crown icon"

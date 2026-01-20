@@ -1,0 +1,13 @@
+colors:
+  primary:
+    black_velvet: "#0B0B0B"
+    royal_gold: "#D4AF37"
+  secondary:
+    deep_gold_shadow: "#9E7C19"
+    champagne_glow: "#F3E6C8"
+  accents:
+    halo_light: "rgba(255,215,130,0.7)"
+    sparkle_gold: "rgba(255,215,160,0.8)"
+  background_textures:
+    - velvet_black_grain
+    - matte_black_silk

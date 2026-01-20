@@ -1,0 +1,46 @@
+catalog:
+  currency: USD
+  categories:
+    - id: bobo
+      name: "Stuffed Bobo Balloons"
+      icon: bubble
+      items:
+        - name: "Standard Stuffed Bobo"
+          price_from: 35
+        - name: "Money Stuffed Bobo"
+          price_from: 55
+        - name: "BuzzBall Stuffed Bobo (21+)"
+          price_from: 60
+
+    - id: money
+      name: "Money Roses & Money Art"
+      icon: rose
+      items:
+        - name: "Money Rose Bouquet"
+          price_from: 45
+        - name: "Money Butterfly / Wings"
+          price_from: 65
+        - name: "Money Crown Box"
+          price_from: 90
+
+    - id: alcohol
+      name: "BuzzBall & Mini Bottle Bouquets (21+)"
+      icon: bottle
+      items:
+        - name: "BuzzBall Bouquet (3)"
+          price: 25
+        - name: "BuzzBall Bouquet (5)"
+          price: 40
+        - name: "BuzzBall Bouquet Deluxe"
+          price: 55
+
+    - id: valentine
+      name: "Heart Rose Boxes"
+      icon: heart
+      items:
+        - name: "Small"
+          price: 40
+        - name: "Medium"
+          price: 75
+        - name: "Luxury Large"
+          price: 150
